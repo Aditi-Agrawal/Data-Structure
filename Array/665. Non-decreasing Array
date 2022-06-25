@@ -1,0 +1,14 @@
+class Solution {
+    public boolean checkPossibility(int[] nums) {
+        int changeCount = 0;      
+        for(int index = 1; index < nums.length && changeCount <=1 ; index++){
+            if(nums[index-1] > nums[index]){
+                changeCount++;
+                if(index-2<0 || nums[index-2] <= nums[index ]) 
+                   nums[index-1] = nums[index];
+                else nums[index] = nums[index-1];  
+            }
+        }
+        return changeCount<=1; 
+    }
+}
