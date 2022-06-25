@@ -12,3 +12,13 @@ class Solution {
         return changeCount<=1; 
     }
 }
+
+
+//Approach
+Idea:
+This problem is like a greedy problem. We can try to change the index only if it does not meet the increasing criteria.
+
+The basic idea is when we encounter some situation where nums[index-1]>nums[index], we need to change the value of nums[index-1] but there might be another case where
+nums[index-2] > nums[index]. In that case, we need to update the value of nums[index] otherwise to make the array non-decreasing, we will have to update the value of 
+both nums[index-1] and nums[index-2]. We can keep a track of how many times we changed the value to make it non-decreasing. If it’s more than 1 the output will be false 
+or else it will be true.
