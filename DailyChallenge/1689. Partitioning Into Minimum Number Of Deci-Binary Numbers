@@ -1,0 +1,13 @@
+Input: n = "32"
+Output: 3
+Explanation: 10 + 11 + 11 = 32
+
+class Solution {
+    public int minPartitions(String n) {
+        int result = 0;
+        for(char c:n.toCharArray()){
+            result = Math.max((c-'0'),result);
+        }
+        return result;
+    }
+}
