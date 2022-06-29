@@ -20,3 +20,6 @@ class Solution {
     }
 }
 
+TC = O(nlogn)
+SC = O(1)
+
