@@ -1,0 +1,81 @@
+import java.util.*;
+public class BinaryTree
+{
+    //3 true 6 true 7 false false true 8 false false true 5 false false
+    Scanner sc = new Scanner(System.in);
+    
+    class Node{
+        int data;
+        Node left;
+        Node right;
+    }
+    Node root;
+    Node parent;
+    public void construct(){
+        this.root = construct(parent,true);
+    }
+    
+    private Node construct(Node parent,boolean ilc){
+        
+        if(parent == null){
+            System.out.println("Enter the data for root...");
+        }
+        else{
+            if(ilc){
+                System.out.println("Enter data for left child...");
+            }
+            else{
+                System.out.println("Enter data for right child...");
+            }
+        }
+        int data = sc.nextInt();
+        Node node = new Node();
+        node.data = data;
+        
+        System.out.println("kya "+node.data+" ka left child hai???");
+        boolean kyaLeftHai = sc.nextBoolean();
+        if(kyaLeftHai){
+            node.left = construct(node,true);
+        }
+        
+        System.out.println("kya "+node.data+" ka right child hai???");
+        boolean kyaRightHai = sc.nextBoolean();
+        if(kyaRightHai){
+            node.right = construct(node,false);
+        }
+        return node;
+    }
+    
+    public void display(){
+        display(root);
+    }
+    
+    private void display(Node parent){
+        if(parent == null){
+            return;
+        }
+        else{
+            if(parent.left != null){
+                System.out.print(parent.left.data);    
+            }
+            else{
+                System.out.print("null");
+            }
+            System.out.print(" <- "+parent.data+" -> ");
+            if(parent.right != null){
+                System.out.println(parent.right.data);    
+            }
+            else{
+                System.out.println("null");
+            }
+        }
+        display(parent.left);
+        display(parent.right);
+    }
+    
+	public static void main(String[] args) {
+		BinaryTree bt = new BinaryTree();
+		bt.construct();
+		bt.display();
+	}
+}
