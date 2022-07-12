@@ -1,0 +1,24 @@
+class Solution {
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        Queue<TreeNode> bfs = new LinkedList<>();
+        List<List<Integer>> ans  = new ArrayList<>();
+        if(root==null)return ans;
+        bfs.add(root);
+        while(!bfs.isEmpty()){
+            int count = bfs.size();
+            List<Integer> currLvl = new ArrayList<>();
+            for(int i=0;i<count;i++){
+                TreeNode front = bfs.poll();
+                currLvl.add(front.val);
+                if(front.left != null){
+                    bfs.add(front.left);
+                }
+                if(front.right != null){
+                    bfs.add(front.right);
+                }
+            }
+            ans.add(0,currLvl);   // twist only here, rest of the code similar to 102.binary tree level order
+        }
+        return ans;
+    }
+}
