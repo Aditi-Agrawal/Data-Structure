@@ -1,0 +1,53 @@
+My Solution = Failed
+
+class HelloWorld {
+    static int numMatchingSubseq(String s, String[] words) {
+        int count=0;
+        for(int i=0;i<words.length;i++){
+            String checkStr=words[i];
+            int index=0;
+            int j=0;
+            while(index<checkStr.length() && j<s.length()){
+                if(checkStr.charAt(index)==s.charAt(j)){
+                    index++;
+                    j++;
+                }
+            }
+            if(index==checkStr.length()){
+                count++;
+            }
+        }
+        return count;
+    }
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+        String[] words ={"a","bb","acd","ace"};
+        int counts=numMatchingSubseq("abcde",words);
+        System.out.println(counts);
+         
+    }
+}
+
+
+Solution Accepted
+class Solution {
+    public int numMatchingSubseq(String superString, String[] words) {
+        int matchingSubSequences = 0, m = superString.length();
+        HashMap<String, Integer> frequencyOfWords = new HashMap<>();
+        for (String word : words)
+            frequencyOfWords.put(word, frequencyOfWords.getOrDefault(word, 0) + 1);
+
+        //Now use the same method used in the question isSubSequence?
+        for (String subSequence : frequencyOfWords.keySet()){
+            int i = 0, j = 0, n = subSequence.length();
+            while (i < m && j < n){
+                if (superString.charAt(i) == subSequence.charAt(j)){
+                    j++;
+                }
+                i++;
+            }
+            if (j == n) matchingSubSequences += frequencyOfWords.get(subSequence);
+        }
+        return matchingSubSequences;
+    }
+}
