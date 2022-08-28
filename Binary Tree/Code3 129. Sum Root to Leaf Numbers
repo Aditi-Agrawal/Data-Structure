@@ -1,0 +1,26 @@
+class Solution {
+    static int sum;
+    public int sumNumbers(TreeNode root) {
+        Integer currPath=new Integer(0);
+        sum=0;
+        sumNumbers(root,currPath);
+        return sum;
+    }
+    public void sumNumbers(TreeNode root, int currPath){
+        if(root==null){
+            return;
+        }
+        if(root.right==null && root.left==null){//means leaf node
+            currPath+=root.val;
+            //System.out.println(currPath);
+            Integer j=new Integer(currPath);
+            sum=j+sum;
+            System.out.println(sum);
+            currPath-=root.val;
+            return;
+        }
+        currPath+=root.val;
+        sumNumbers(root.left,currPath*10);
+        sumNumbers(root.right,currPath*10);
+    }
+}
