@@ -1,3 +1,34 @@
+Approach Used in (level order traversal)-----
+class Solution {
+    public List<Integer> rightSideView(TreeNode root) {
+        Queue<TreeNode> bfs = new LinkedList();
+        List<Integer> rightView = new ArrayList<>();
+        if(root == null){
+            return rightView;
+        }
+        bfs.add(root);
+        while(!bfs.isEmpty()){
+            int len = bfs.size();
+            List<Integer> currLvl = new ArrayList<>();
+            for(int i=0;i<len;i++){
+                TreeNode front = bfs.poll();
+                currLvl.add(front.val);
+                if(front.left!=null){
+                    bfs.add(front.left);
+                }
+                if(front.right!=null){
+                    bfs.add(front.right);
+                }
+            }
+            rightView.add(currLvl.get(currLvl.size()-1));
+        }
+       return rightView; 
+    }
+    
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+ANOTHER APROACH
+
 class Solution {
     static int maxLvl;
     public List<Integer> rightSideView(TreeNode root) {
