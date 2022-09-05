@@ -1,4 +1,4 @@
-Approach Used in (level order traversal)-----
+Approach Used in (level order traversal)------------------------------BFS APPROACH(ITERATIVE)---------------------------------------------------------------------------
 class Solution {
     public List<Integer> rightSideView(TreeNode root) {
         Queue<TreeNode> bfs = new LinkedList();
@@ -26,7 +26,7 @@ class Solution {
     }
     
 }
----------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------DFS APPROACH (RECURSION)-------------------------------------------------------------------------------------------
 ANOTHER APROACH
 
 class Solution {
