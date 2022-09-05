@@ -1,5 +1,32 @@
-public class DiameterOne {
+BRUTE FORCE METHOD (TIME COMPELXITY = O(n*N)
+class Solution {
+    public int diameterOfBinaryTree(TreeNode root) {
+        if(root==null){
+            return 0;
+        }
+        int leftTreeKiHeight = height(root.left);
+        int rightTreeKiHeight = height(root.right);
+        
+        int apnaDia = leftTreeKiHeight + rightTreeKiHeight;
+        
+        int leftDia = diameterOfBinaryTree(root.left);
+        int rightDia = diameterOfBinaryTree(root.right);
+        return Math.max(apnaDia,Math.max(leftDia,rightDia));
+    }
+    public int height(TreeNode root){
+        if(root==null){
+            return 0;
+        }
+        int left = height(root.left);
+        int right = height(root.right);
+        return Math.max(left,right)+1;
+        
+    }
+}
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+OPTIMISED SOLUTION (TIME COMPLEXITY = O(N))
 
+public class DiameterOne {
 	// Definition for a binary tree node.
 	public class TreeNode {
 		int val;
@@ -19,7 +46,7 @@ public class DiameterOne {
 			this.right = right;
 		}
 	}
-
+class Solution{
 	class Pair {
 		int height;
 		int diameter;
@@ -52,10 +79,4 @@ public class DiameterOne {
 
 		return new Pair(apniHeight, maxDia);
 	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 }
