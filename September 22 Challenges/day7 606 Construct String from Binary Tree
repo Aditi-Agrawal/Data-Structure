@@ -1,0 +1,31 @@
+Here we are using string builder bcz they are mutable. On the other hand String are immutable results in increase in the space complexity. Hence we are using string Builder.
+
+class Solution {
+    StringBuilder str=new StringBuilder();
+    public String tree2str(TreeNode root) {
+        preOrder(root);
+        return str.toString();
+    }
+    public void preOrder(TreeNode root){
+        if(root==null){
+            return;
+        }
+        str.append(root.val);
+        if(root.left==null && root.right==null){
+            return;
+        }
+        if(root.left!=null){
+            str.append("(");
+            preOrder(root.left);
+            str.append(")");
+        }
+        if(root.right!=null){
+            if(root.left==null){
+                str.append("()");
+            }
+            str.append("(");
+            preOrder(root.right);
+            str.append(")");
+        }
+    }
+}
