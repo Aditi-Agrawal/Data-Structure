@@ -1,0 +1,42 @@
+Time complexity = O(prices.length * 2 * k)
+Space Complexity = O(prices.length * 2 * k)
+
+link to understand = https://www.youtube.com/watch?v=wiG2MnOETWk
+(That indian coder)
+
+class Solution {
+    Integer[][][] dp;
+    public int maxProfit(int k, int[] prices) {
+        dp = new Integer[prices.length][2][k+1];
+        return helper(prices, 0, 0, 0, k);
+    }
+    public int helper(int[] prices, int index, int stage, int transaction, int k){
+        //base condition
+        if(index>=prices.length || transaction>=k){
+            return 0;
+        }
+        if(dp[index][stage][transaction]!=null){
+            return dp[index][stage][transaction];
+        }
+        
+        //logic buy=0 sell=1
+        
+        if(stage==0){
+            //buy
+            int option1 = -prices[index] + helper(prices, index+1, 1, transaction, k);
+            //not buy
+            int option2 = helper(prices, index+1, 0, transaction, k);
+            
+            return dp[index][stage][transaction] = Math.max(option1,option2);
+            
+        }
+        else{
+            //sell
+            int option1 = prices[index] + helper(prices, index+1, 0, transaction+1, k);
+            //not sell
+            int option2 = helper(prices, index+1, 1, transaction, k);
+            
+            return dp[index][stage][transaction] = Math.max(option1,option2);
+        }
+    }
+}
