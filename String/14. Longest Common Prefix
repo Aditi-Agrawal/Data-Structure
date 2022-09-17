@@ -1,0 +1,15 @@
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        //time O(n) space o(1)   
+        StringBuilder longestPrefix = new StringBuilder();
+        longestPrefix.append(strs[0]);
+
+        for (int i = 1; i < strs.length; i++) {
+            while (!strs[i].startsWith(longestPrefix.toString())) {
+                longestPrefix.deleteCharAt(longestPrefix.length() - 1);
+            } 
+        }
+
+        return longestPrefix.toString();
+    }
+}
