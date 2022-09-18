@@ -1,0 +1,27 @@
+Time Complexity = O(n)
+Space Complexity = O(n)
+
+class Solution {
+
+  public int trap(int[] height) {
+    if (height.length <=1) return 0;
+
+    Stack<Integer> stack = new Stack<>();
+    int water = 0, i = 0;
+    while (i < height.length) {
+      if (stack.isEmpty() || height[i] <= height[stack.peek()]) {
+        stack.push(i++);
+      } else {
+        int currIndex = stack.pop();
+        if (!stack.isEmpty()) {
+          // find the smaller height between the two sides
+          int minHeight = Math.min(height[stack.peek()], height[i]);
+          // calculate the area
+          water += (minHeight - height[currIndex]) * (i - stack.peek() - 1);
+        }
+      }
+    }
+    return water;
+  }
+
+}
