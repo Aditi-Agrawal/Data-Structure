@@ -1,0 +1,22 @@
+class Solution {
+    public String reverseWords(String s) {
+        String[] str = s.split(" ");
+        StringBuilder ans = new StringBuilder();
+        for(String word:str){
+            StringBuilder currWord = new StringBuilder(word);
+            int n=word.length();
+            for(int i=0;i<n/2;i++){
+                char frontChar = word.charAt(i);
+                char backChar = word.charAt(n-1-i);
+                int front = i;
+                int back = n-1-i;
+                currWord.setCharAt(front,backChar);
+                currWord.setCharAt(back,frontChar);
+            }
+            ans.append(currWord);
+            ans.append(" ");
+        }
+        ans.deleteCharAt(ans.length()-1);
+        return ans.toString();
+    }
+}
