@@ -1,5 +1,4 @@
 public class StairWays {
-
 	private static int sol(int n) {
 		if(n == 0 || n == 1) {
 			return 1;
@@ -11,7 +10,6 @@ public class StairWays {
 		return totalWays;
 	}
 	public static void main(String[] args) {
-		System.out.println(sol(2));
+		System.out.println(sol(4));
 	}
-
 }
