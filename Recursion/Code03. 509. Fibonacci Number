@@ -1,5 +1,4 @@
 public class FibonacciNumber {
-
 	private static int sol(int n) {
 		if(n == 0 || n == 1) {
 			return n;
@@ -12,6 +11,6 @@ public class FibonacciNumber {
 		return meraAnswer;
 	}
 	public static void main(String[] args) {
-		System.out.println(sol(4));
+		System.out.println(sol(2));
 	}
 }
