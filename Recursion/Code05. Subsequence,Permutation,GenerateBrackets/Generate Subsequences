@@ -1,0 +1,55 @@
+Subsequences =  1. Segment / part of String
+                2. Contiguos / Non-contiguous
+                3. Maintains relative ordering
+                4. A String is the subsequence of itself. eg="abc" is seusequence of "abc"
+                5. Null is always a valid subsequence of a string.
+              
+4 different words related to subsequences-
+1. Subsequence  (STRING)
+2. Substring    (STRING)
+3. Subarray     (ARRAY)
+4. Subset       (ARRAY)
+
+To generate a subsequence we need to recursive calls:- 
+                                                      1.Inclusive(Rakshas)
+                                                      2.Exclusive(Rakshak)
+*******************************Generate Subsequence with int return type************************************
+public class SubsequenceGenerate {
+	public static int genSubs2(String input, String ans) {
+		if (input.length() == 0) {
+			System.out.println(ans);
+			return 1;
+		}
+		int count = 0;
+		char cc = input.charAt(0); // a
+		count = count + genSubs2(input.substring(1), ans);
+		count = count + genSubs2(input.substring(1), ans + cc);
+		return count;
+	}
+	public static void main(String[] args) {
+		int ct = genSubs2("abc", "");
+		System.out.println(ct);
+	}
+}
+*******************************Generate Subsequence with void return type************************************
+public class SubsequenceGenerate {
+
+	static int count;  
+	public static void genSubs(String input, String ans) {
+		if (input.length() == 0) {
+			count++;
+			System.out.println(ans);
+			return;
+		}
+		char cc = input.charAt(0); // a
+		genSubs(input.substring(1), ans);
+		genSubs(input.substring(1), ans + cc);
+	}
+
+	public static void main(String[] args) {
+		count = 0;
+		genSubs2("abc", "");
+		System.out.println(count);
+	}
+}
+
