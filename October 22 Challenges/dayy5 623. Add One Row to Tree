@@ -5,6 +5,7 @@ class Solution {
             newNode.left=root;
             return newNode;
         }
+        // The difference between poll() and pop() is that pop will throw NoSuchElementException() on empty list, whereas poll returns null.
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         int currDepth = 1;
